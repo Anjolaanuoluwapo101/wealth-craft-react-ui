@@ -34,9 +34,14 @@ const App = () => (
             <Route path="/mutual-fund" element={<DummyPage />} />
             <Route path="/insurance" element={<DummyPage />} />
             <Route path="/blog" element={<DummyPage />} />
+            <Route path="/forum" element={<DummyPage />} />
+            <Route path="/videos" element={<DummyPage />} />
             <Route path="/bonds" element={<DummyPage />} />
             <Route path="/pms" element={<DummyPage />} />
             <Route path="/tools" element={<DummyPage />} />
+            <Route path="/why-us" element={<DummyPage />} />
+            <Route path="/benefits" element={<DummyPage />} />
+            <Route path="/testimonials" element={<DummyPage />} />
             <Route path="/unlisted-shares" element={<DummyPage />} />
             <Route path="/terms" element={<DummyPage />} />
             <Route path="/privacy" element={<DummyPage />} />

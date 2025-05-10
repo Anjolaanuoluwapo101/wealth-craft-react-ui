@@ -1,4 +1,3 @@
-
 import React from 'react';
 import HeroBanner from '../components/HeroBanner';
 import Header from '../components/Header';
@@ -11,9 +10,9 @@ import CtaSection from '../components/CtaSection';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="w3-container w3-light-grey" style={{ minHeight: "100vh" }}>
       <Header />
-      <main className="flex-grow">
+      <main className="w3-padding-large">
         <HeroBanner />
         <FeatureSection />
         <RecommendedFundsSection />

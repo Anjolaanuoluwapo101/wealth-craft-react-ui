@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -42,65 +41,67 @@ const Login = () => {
   };
   
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow flex items-center justify-center bg-gray-50 py-12 px-4">
-        <div className="w-full max-w-md">
+    <div className="w3-container w3-light-grey" style={{ minHeight: "100vh" }}>
+      <Header  />
+      <main className="w3-padding-large w3-center">
+        <div className="w3-card w3-white w3-round-large w3-margin-auto" style={{ maxWidth: "400px", width: "100%" }}>
           <Tabs defaultValue="login" value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="login">Login</TabsTrigger>
-              <TabsTrigger value="register">Register</TabsTrigger>
+            <TabsList className="w3-bar w3-border w3-round-large">
+              <TabsTrigger value="login" className="w3-bar-item w3-button w3-hover-light-grey">Login</TabsTrigger>
+              <TabsTrigger value="register" className="w3-bar-item w3-button w3-hover-light-grey">Register</TabsTrigger>
             </TabsList>
             
             <TabsContent value="login">
               <Card>
                 <CardHeader>
-                  <CardTitle>Login to your account</CardTitle>
-                  <CardDescription>
+                  <CardTitle className="w3-large">Login to your account</CardTitle>
+                  <CardDescription className="w3-small">
                     Enter your credentials to access your account
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleLogin}>
-                    <div className="grid gap-4">
-                      <div className="grid gap-2">
+                    <div className="w3-container">
+                      <div className="w3-margin-bottom">
                         <Label htmlFor="email">Email</Label>
                         <Input 
                           id="email" 
                           type="email" 
+                          className="w3-input w3-border w3-round"
                           placeholder="name@example.com" 
                           value={loginEmail}
                           onChange={(e) => setLoginEmail(e.target.value)}
                           required
                         />
                       </div>
-                      <div className="grid gap-2">
-                        <div className="flex items-center justify-between">
-                          <Label htmlFor="password">Password</Label>
-                          <Link to="/forgot-password" className="text-sm text-primary hover:underline">
+                      <div className="w3-margin-bottom">
+                        <div className="w3-row">
+                          <Label htmlFor="password" className="w3-col s6">Password</Label>
+                          <Link to="/forgot-password" className="w3-col s6 w3-right-align w3-small w3-text-blue">
                             Forgot password?
                           </Link>
                         </div>
                         <Input 
                           id="password" 
                           type="password"
+                          className="w3-input w3-border w3-round"
                           value={loginPassword}
                           onChange={(e) => setLoginPassword(e.target.value)}
                           required
                         />
                       </div>
-                      <Button type="submit" className="w-full">
+                      <Button type="submit" className="w3-button w3-blue w3-round w3-block">
                         Sign In
                       </Button>
                     </div>
                   </form>
                 </CardContent>
-                <CardFooter className="flex justify-center">
-                  <p className="text-sm text-muted-foreground">
+                <CardFooter className="w3-center">
+                  <p className="w3-small">
                     Don't have an account?{" "}
                     <button 
                       onClick={() => setActiveTab('register')} 
-                      className="text-primary hover:underline"
+                      className="w3-text-blue w3-hover-text-light-blue"
                     >
                       Register
                     </button>
@@ -112,68 +113,72 @@ const Login = () => {
             <TabsContent value="register">
               <Card>
                 <CardHeader>
-                  <CardTitle>Create an account</CardTitle>
-                  <CardDescription>
+                  <CardTitle className="w3-large">Create an account</CardTitle>
+                  <CardDescription className="w3-small">
                     Enter your details to create your account
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleRegister}>
-                    <div className="grid gap-4">
-                      <div className="grid gap-2">
+                    <div className="w3-container">
+                      <div className="w3-margin-bottom">
                         <Label htmlFor="name">Name</Label>
                         <Input 
                           id="name" 
                           type="text" 
+                          className="w3-input w3-border w3-round"
                           placeholder="John Doe" 
                           value={registerName}
                           onChange={(e) => setRegisterName(e.target.value)}
                           required
                         />
                       </div>
-                      <div className="grid gap-2">
+                      <div className="w3-margin-bottom">
                         <Label htmlFor="registerEmail">Email</Label>
                         <Input 
                           id="registerEmail" 
                           type="email" 
+                          className="w3-input w3-border w3-round"
                           placeholder="name@example.com" 
                           value={registerEmail}
                           onChange={(e) => setRegisterEmail(e.target.value)}
                           required
                         />
                       </div>
-                      <div className="grid gap-2">
+                      <div className="w3-margin-bottom">
                         <Label htmlFor="registerPassword">Password</Label>
                         <Input 
                           id="registerPassword" 
                           type="password"
+                          className="w3-input w3-border w3-round"
                           value={registerPassword}
                           onChange={(e) => setRegisterPassword(e.target.value)}
                           required
                         />
                       </div>
-                      <div className="grid gap-2">
+                      <div className="w3-margin-bottom">
                         <Label htmlFor="confirmPassword">Confirm Password</Label>
                         <Input 
                           id="confirmPassword" 
                           type="password"
+                          className="w3-input w3-border w3-round"
                           value={confirmPassword}
                           onChange={(e) => setConfirmPassword(e.target.value)}
                           required
                         />
                       </div>
-                      <Button type="submit" className="w-full">
+                      <Button type="submit" className="w3-button w3-blue w3-round w3-block">
                         Create Account
                       </Button>
                     </div>
                   </form>
                 </CardContent>
-                <CardFooter className="flex justify-center">
-                  <p className="text-sm text-muted-foreground">
+                <CardFooter className="w3-center">
+                  <p className="w3-small">
                     Already have an account?{" "}
                     <button 
                       onClick={() => setActiveTab('login')} 
-                      className="text-primary hover:underline"
+                      className="w3-text-blue w3-hover-text-light-blue"
                     >
                       Login
                     </button>
