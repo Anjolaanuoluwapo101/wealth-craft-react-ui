@@ -2,39 +2,39 @@
 import React from 'react';
 import { BlogPost } from '../types';
 import { blogPosts } from '../data/mockData';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
-import { Button } from './ui/button';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
-import { Badge } from './ui/badge';
 
 const BlogSection: React.FC = () => {
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h2 className="text-3xl font-bold mb-2">Latest Insights</h2>
-            <p className="text-gray-600">Stay updated with expert financial knowledge and market trends</p>
+    <section className="w3-container w3-padding-64 w3-light-grey">
+      <div className="w3-container">
+        <div className="w3-row w3-padding-16">
+          <div className="w3-col m8">
+            <h2 className="w3-xxlarge">Latest Insights</h2>
+            <p className="w3-text-grey">Stay updated with expert financial knowledge and market trends</p>
           </div>
-          <Link to="/blog">
-            <Button variant="outline" className="hidden md:flex">
-              View All Articles <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
-          </Link>
+          <div className="w3-col m4 w3-right-align w3-hide-small">
+            <Link to="/blog">
+              <button className="w3-button w3-border w3-round w3-hover-light-grey">
+                View All Articles <i className="fa fa-arrow-right w3-margin-left"></i>
+              </button>
+            </Link>
+          </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="w3-row-padding">
           {blogPosts.map((post) => (
-            <BlogPostCard key={post.id} post={post} />
+            <div key={post.id} className="w3-col l4 m6 s12 w3-padding-16">
+              <BlogPostCard post={post} />
+            </div>
           ))}
         </div>
         
-        <div className="mt-8 text-center md:hidden">
+        <div className="w3-center w3-padding-16 w3-hide-medium w3-hide-large">
           <Link to="/blog">
-            <Button variant="outline">
-              View All Articles <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <button className="w3-button w3-border w3-round w3-hover-light-grey">
+              View All Articles <i className="fa fa-arrow-right w3-margin-left"></i>
+            </button>
           </Link>
         </div>
       </div>
@@ -44,31 +44,34 @@ const BlogSection: React.FC = () => {
 
 const BlogPostCard: React.FC<{ post: BlogPost }> = ({ post }) => {
   return (
-    <Card className="h-full overflow-hidden transition-shadow hover:shadow-lg">
-      <div className="h-48 overflow-hidden">
+    <div className="w3-card w3-round w3-white w3-hover-shadow" style={{height: '100%'}}>
+      <div className="w3-display-container" style={{height: '200px'}}>
         <img 
           src={post.imageUrl} 
           alt={post.title}
-          className="w-full h-full object-cover"
+          className="w3-image"
+          style={{width: '100%', height: '100%', objectFit: 'cover'}}
         />
       </div>
-      <CardHeader className="pb-2">
-        <div className="flex justify-between items-center mb-2">
-          <Badge variant="outline">{post.category}</Badge>
-          <span className="text-sm text-muted-foreground">{post.date}</span>
+      <div className="w3-container w3-padding">
+        <div className="w3-row w3-padding-small">
+          <div className="w3-col m6">
+            <span className="w3-tag w3-theme-l4 w3-round w3-small">{post.category}</span>
+          </div>
+          <div className="w3-col m6 w3-right-align">
+            <span className="w3-small w3-text-grey">{post.date}</span>
+          </div>
         </div>
-        <CardTitle className="text-xl leading-tight">{post.title}</CardTitle>
-        <CardDescription className="text-sm">By {post.author}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p className="text-gray-600">{post.excerpt}</p>
-      </CardContent>
-      <CardFooter>
-        <Link to={`/blog/${post.id}`} className="text-primary font-medium hover:text-primary-hover flex items-center">
-          Read More <ArrowRight className="ml-1 w-4 h-4" />
+        <h3 className="w3-large w3-text-dark-grey">{post.title}</h3>
+        <p className="w3-small w3-text-grey">By {post.author}</p>
+        <p className="w3-text-grey">{post.excerpt}</p>
+      </div>
+      <div className="w3-container w3-padding-16">
+        <Link to={`/blog/${post.id}`} className="w3-text-theme w3-hover-text-theme-d2">
+          Read More <i className="fa fa-arrow-right w3-small w3-margin-left"></i>
         </Link>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 };
 

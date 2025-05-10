@@ -3,14 +3,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { menuItems } from '../data/mockData';
 import { useAuth } from '../context/AuthContext';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from './ui/button';
-import { ChevronDown, Menu, X } from 'lucide-react';
 
 const Header: React.FC = () => {
   const { user, logout } = useAuth();
@@ -28,20 +20,22 @@ const Header: React.FC = () => {
 
     if (item.children) {
       return (
-        <DropdownMenu key={item.id}>
-          <DropdownMenuTrigger className="px-3 py-2 hover:text-secondary-hover flex items-center">
-            {item.label} <ChevronDown size={16} className="ml-1" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
+        <div key={item.id} className="w3-dropdown-hover">
+          <button className="w3-button">
+            {item.label} <i className="fa fa-caret-down"></i>
+          </button>
+          <div className="w3-dropdown-content w3-card-4 w3-bar-block" style={{minWidth: '200px'}}>
             {item.children.map((child: any) => (
-              <DropdownMenuItem key={child.id} asChild>
-                <Link to={child.path} className="w-full">
-                  {child.label}
-                </Link>
-              </DropdownMenuItem>
+              <Link 
+                key={child.id} 
+                to={child.path} 
+                className="w3-bar-item w3-button w3-hover-theme"
+              >
+                {child.label}
+              </Link>
             ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </div>
+        </div>
       );
     }
 
@@ -49,7 +43,7 @@ const Header: React.FC = () => {
       <Link
         key={item.id}
         to={item.path}
-        className="px-3 py-2 hover:text-secondary-hover"
+        className="w3-bar-item w3-button w3-hover-theme"
       >
         {item.label}
       </Link>
@@ -57,145 +51,150 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-white shadow-md">
-      <div className="container mx-auto">
-        <div className="flex justify-between items-center py-4 px-6 lg:px-0">
-          <Link to="/" className="text-2xl font-bold text-primary flex items-center">
-            <span className="text-secondary">Wealth</span>Craft
+    <header className="w3-white w3-card">
+      <div className="w3-container">
+        {/* Desktop Navigation */}
+        <div className="w3-bar">
+          <Link to="/" className="w3-bar-item w3-button w3-padding-16">
+            <span className="w3-large">
+              <span className="w3-text-amber">Wealth</span>
+              <span className="w3-text-theme">Craft</span>
+            </span>
           </Link>
-
-          {/* Mobile menu button */}
-          <div className="lg:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleMobileMenu}
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X /> : <Menu />}
-            </Button>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          
+          <div className="w3-right w3-hide-medium w3-hide-small">
+            {/* Navigation Items */}
             {menuItems.map(item => renderMenuItem(item))}
             
             {user ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="ml-4">
-                    {user.name} <ChevronDown size={16} className="ml-1" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem asChild>
-                    <Link to="/dashboard" className="w-full">Dashboard</Link>
-                  </DropdownMenuItem>
-                  {(user.role === 'admin' || user.role === 'master') && (
-                    <DropdownMenuItem asChild>
-                      <Link to="/admin" className="w-full">Admin Panel</Link>
-                    </DropdownMenuItem>
-                  )}
-                  {user.role === 'master' && (
-                    <DropdownMenuItem asChild>
-                      <Link to="/master-admin" className="w-full">Master Admin</Link>
-                    </DropdownMenuItem>
-                  )}
-                  <DropdownMenuItem onClick={logout}>
-                    Logout
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <Link to="/login">
-                <Button variant="default" className="ml-4">
-                  Login / Register
-                </Button>
-              </Link>
-            )}
-          </nav>
-        </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <nav className="lg:hidden bg-white py-4 px-6 border-t">
-            <div className="flex flex-col space-y-3">
-              {menuItems.map(item => {
-                // Skip items requiring auth if user is not logged in
-                if (item.requiresAuth && !user) {
-                  return null;
-                }
-
-                if (item.children) {
-                  return (
-                    <div key={item.id} className="relative">
-                      <Link
-                        to={item.path}
-                        className="block py-2 font-medium"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          // Toggle submenu logic would go here
-                        }}
-                      >
-                        {item.label}
-                      </Link>
-                      <div className="pl-4 border-l-2 border-gray-200 ml-2 mt-1 space-y-1">
-                        {item.children.map((child: any) => (
-                          <Link
-                            key={child.id}
-                            to={child.path}
-                            className="block py-1 text-gray-600 hover:text-secondary-hover"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                }
-
-                return (
-                  <Link
-                    key={item.id}
-                    to={item.path}
-                    className="block py-2 font-medium hover:text-secondary-hover"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-              
-              {user ? (
-                <>
-                  <Link to="/dashboard" className="block py-2 font-medium">
-                    My Dashboard
+              <div className="w3-dropdown-hover">
+                <button className="w3-button w3-padding-16">
+                  {user.name} <i className="fa fa-caret-down"></i>
+                </button>
+                <div className="w3-dropdown-content w3-card-4 w3-bar-block" style={{right: 0, minWidth: '200px'}}>
+                  <Link to="/dashboard" className="w3-bar-item w3-button w3-hover-theme">
+                    Dashboard
                   </Link>
                   {(user.role === 'admin' || user.role === 'master') && (
-                    <Link to="/admin" className="block py-2 font-medium">
+                    <Link to="/admin" className="w3-bar-item w3-button w3-hover-theme">
                       Admin Panel
                     </Link>
                   )}
                   {user.role === 'master' && (
-                    <Link to="/master-admin" className="block py-2 font-medium">
+                    <Link to="/master-admin" className="w3-bar-item w3-button w3-hover-theme">
                       Master Admin
                     </Link>
                   )}
                   <button 
                     onClick={logout}
-                    className="block py-2 font-medium text-left w-full"
+                    className="w3-bar-item w3-button w3-hover-theme"
                   >
                     Logout
                   </button>
-                </>
-              ) : (
-                <Link to="/login" className="block py-2 font-medium">
+                </div>
+              </div>
+            ) : (
+              <Link to="/login">
+                <button className="w3-bar-item w3-button w3-theme w3-padding-16">
                   Login / Register
+                </button>
+              </Link>
+            )}
+          </div>
+          
+          {/* Mobile menu button */}
+          <button 
+            className="w3-bar-item w3-button w3-right w3-hide-large w3-padding-16"
+            onClick={toggleMobileMenu}
+          >
+            <i className="fa fa-bars"></i>
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <div className="w3-bar-block w3-hide-large w3-animate-opacity">
+            {menuItems.map(item => {
+              // Skip items requiring auth if user is not logged in
+              if (item.requiresAuth && !user) {
+                return null;
+              }
+
+              if (item.children) {
+                return (
+                  <div key={item.id} className="w3-block">
+                    <div className="w3-bar-item">{item.label}</div>
+                    <div className="w3-padding-left-16">
+                      {item.children.map((child: any) => (
+                        <Link
+                          key={child.id}
+                          to={child.path}
+                          className="w3-bar-item w3-button w3-hover-theme"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={item.id}
+                  to={item.path}
+                  className="w3-bar-item w3-button w3-hover-theme"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
                 </Link>
-              )}
-            </div>
-          </nav>
+              );
+            })}
+            
+            {user ? (
+              <>
+                <Link to="/dashboard" 
+                  className="w3-bar-item w3-button w3-hover-theme"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  My Dashboard
+                </Link>
+                {(user.role === 'admin' || user.role === 'master') && (
+                  <Link to="/admin" 
+                    className="w3-bar-item w3-button w3-hover-theme"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Admin Panel
+                  </Link>
+                )}
+                {user.role === 'master' && (
+                  <Link to="/master-admin" 
+                    className="w3-bar-item w3-button w3-hover-theme"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Master Admin
+                  </Link>
+                )}
+                <button 
+                  onClick={() => {
+                    logout();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w3-bar-item w3-button w3-hover-theme w3-text-left"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link to="/login" 
+                className="w3-bar-item w3-button w3-theme"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Login / Register
+              </Link>
+            )}
+          </div>
         )}
       </div>
     </header>

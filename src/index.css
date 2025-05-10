@@ -25,6 +25,7 @@ body, h1, h2, h3, h4, h5, h6 {
 .w3-hover-theme:hover {color:#fff !important; background-color:#2196f3 !important}
 .w3-hover-text-theme:hover {color:#2196f3 !important}
 .w3-hover-border-theme:hover {border-color:#2196f3 !important}
+.w3-hover-text-theme-d2:hover {color:#0b78d1 !important}
 
 .w3-primary {color:#fff !important; background-color:#2196f3 !important}
 .w3-secondary {color:#000 !important; background-color:#ffc107 !important}
@@ -32,6 +33,11 @@ body, h1, h2, h3, h4, h5, h6 {
 .w3-padding-64 {
   padding-top: 64px!important;
   padding-bottom: 64px!important;
+}
+
+.w3-padding-32 {
+  padding-top: 32px!important;
+  padding-bottom: 32px!important;
 }
 
 .w3-padding-24 {
@@ -46,6 +52,10 @@ body, h1, h2, h3, h4, h5, h6 {
 
 .w3-padding-small {
   padding: 4px 8px!important;
+}
+
+.w3-padding-left-16 {
+  padding-left: 16px!important;
 }
 
 .w3-xxlarge {
@@ -99,4 +109,50 @@ body, h1, h2, h3, h4, h5, h6 {
 /* Fix card heights */
 .w3-card {
   transition: all 0.3s;
+}
+
+/* Fix dropdown styling */
+.w3-dropdown-content {
+  z-index: 100;
+  background-color: #fff;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2);
+  min-width: 200px;
+}
+
+/* Ensure mobile menu has correct z-index */
+.w3-bar-block {
+  z-index: 200;
+}
+
+/* Improve mobile responsiveness */
+@media (max-width: 600px) {
+  .w3-hide-small {
+    display: none !important;
+  }
+  
+  .w3-xxlarge {
+    font-size: 28px !important;
+  }
+  
+  .w3-xxxlarge {
+    font-size: 36px !important;
+  }
+}
+
+/* Fix spacing for page layout */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.flex-grow {
+  flex: 1;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex {
+  display: flex;
 }
