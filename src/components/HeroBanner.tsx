@@ -50,12 +50,10 @@ const HeroBanner: React.FC = () => {
           
           <div className="w3-col m6 w3-padding-large w3-hide-small">
             <div className="w3-display-container" style={{position: 'relative'}}>
-              <div style={{
+              <div className="w3-circle w3-opacity-min w3-theme-l4" style={{
                 position: 'absolute',
                 width: '200px',
                 height: '200px',
-                borderRadius: '50%',
-                backgroundColor: 'rgba(0, 102, 204, 0.2)',
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',

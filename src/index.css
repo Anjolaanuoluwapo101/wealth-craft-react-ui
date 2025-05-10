@@ -34,6 +34,20 @@ body, h1, h2, h3, h4, h5, h6 {
   padding-bottom: 64px!important;
 }
 
+.w3-padding-24 {
+  padding-top: 24px!important;
+  padding-bottom: 24px!important;
+}
+
+.w3-padding-16 {
+  padding-top: 16px!important;
+  padding-bottom: 16px!important;
+}
+
+.w3-padding-small {
+  padding: 4px 8px!important;
+}
+
 .w3-xxlarge {
   font-size: 32px!important;
 }
@@ -49,4 +63,40 @@ body, h1, h2, h3, h4, h5, h6 {
 .w3-amber {
   color: #000!important;
   background-color: #ffc107!important;
+}
+
+.w3-text-green {
+  color: #4CAF50!important;
+}
+
+.w3-text-red {
+  color: #f44336!important;
+}
+
+.w3-circle {
+  border-radius: 50%!important;
+}
+
+/* Fix layout issues */
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Fix responsive issues */
+.w3-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Fix button styling */
+.w3-button {
+  transition: all 0.3s;
+}
+
+/* Fix card heights */
+.w3-card {
+  transition: all 0.3s;
 }

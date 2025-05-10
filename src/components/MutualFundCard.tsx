@@ -8,7 +8,7 @@ interface MutualFundCardProps {
 
 const MutualFundCard: React.FC<MutualFundCardProps> = ({ fund }) => {
   return (
-    <div className="w3-card w3-round w3-white w3-hover-shadow">
+    <div className="w3-card w3-round w3-white w3-hover-shadow" style={{height: '100%'}}>
       <div className="w3-container w3-padding">
         <div className="w3-row">
           <div className="w3-col m8">
@@ -26,7 +26,7 @@ const MutualFundCard: React.FC<MutualFundCardProps> = ({ fund }) => {
         <p className="w3-text-grey">{fund.amc}</p>
       </div>
       
-      <div className="w3-container w3-padding">
+      <div className="w3-container w3-padding-small">
         <div className="w3-row w3-padding-small">
           <div className="w3-col m6 w3-text-grey">Category</div>
           <div className="w3-col m6 w3-right-align">{fund.category}</div>
@@ -69,7 +69,7 @@ const MutualFundCard: React.FC<MutualFundCardProps> = ({ fund }) => {
       </div>
       
       <div className="w3-container w3-padding-16">
-        <button className="w3-button w3-blue w3-round w3-block">
+        <button className="w3-button w3-theme w3-round w3-block">
           Invest Now <i className="fa fa-arrow-right w3-small w3-margin-left"></i>
         </button>
       </div>

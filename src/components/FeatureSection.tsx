@@ -48,13 +48,13 @@ const FeatureSection: React.FC = () => {
         <div className="w3-row-padding">
           {features.map((feature, index) => (
             <div key={index} className="w3-col l4 m6 s12 w3-padding-16">
-              <div className="w3-card w3-round-large w3-padding-24 w3-white w3-hover-shadow">
-                <div className="w3-padding-16">
-                  <div className="w3-round-xxlarge w3-blue w3-padding w3-center" style={{width: '64px', height: '64px'}}>
+              <div className="w3-card w3-round-large w3-padding-24 w3-white w3-hover-shadow" style={{height: '100%'}}>
+                <div className="w3-padding-16 w3-center">
+                  <div className="w3-circle w3-theme w3-padding-16 w3-center w3-margin-auto" style={{width: '64px', height: '64px', display: 'inline-block'}}>
                     <i className={`${feature.icon} w3-xxlarge`}></i>
                   </div>
                 </div>
-                <h3 className="w3-large w3-text-dark-grey">{feature.title}</h3>
+                <h3 className="w3-large w3-text-dark-grey w3-center">{feature.title}</h3>
                 <p className="w3-text-grey">{feature.description}</p>
               </div>
             </div>
