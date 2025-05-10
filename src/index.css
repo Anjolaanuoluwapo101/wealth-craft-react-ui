@@ -30,6 +30,8 @@ body, h1, h2, h3, h4, h5, h6 {
 .w3-primary {color:#fff !important; background-color:#2196f3 !important}
 .w3-secondary {color:#000 !important; background-color:#ffc107 !important}
 
+.w3-margin-top-0 {margin-top: 0 !important;}
+
 .w3-padding-64 {
   padding-top: 64px!important;
   padding-bottom: 64px!important;
@@ -95,23 +97,23 @@ body, h1, h2, h3, h4, h5, h6 {
   text-align: left;
 }
 
-/* Fix responsive issues */
+/* Responsive container */
 .w3-container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Fix button styling */
+/* Button styling */
 .w3-button {
   transition: all 0.3s;
 }
 
-/* Fix card heights */
+/* Card styling */
 .w3-card {
   transition: all 0.3s;
 }
 
-/* Fix dropdown styling */
+/* Dropdown styling */
 .w3-dropdown-content {
   z-index: 100;
   background-color: #fff;
@@ -119,12 +121,12 @@ body, h1, h2, h3, h4, h5, h6 {
   min-width: 200px;
 }
 
-/* Ensure mobile menu has correct z-index */
+/* Mobile menu z-index */
 .w3-bar-block {
   z-index: 200;
 }
 
-/* Improve mobile responsiveness */
+/* Mobile responsiveness */
 @media (max-width: 600px) {
   .w3-hide-small {
     display: none !important;
@@ -139,7 +141,7 @@ body, h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Fix spacing for page layout */
+/* Base layout styling */
 .min-h-screen {
   min-height: 100vh;
 }

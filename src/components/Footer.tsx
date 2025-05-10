@@ -2,100 +2,79 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Phone,
-  Mail,
-  MapPin,
   Facebook,
   Twitter,
   Linkedin,
-  Youtube,
-  Instagram
+  Youtube
 } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-primary text-white pt-12 pb-6">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">WealthCraft</h3>
-            <p className="mb-4">
-              Your trusted partner for wealth management and financial planning services.
-            </p>
-            <div className="flex items-center mb-2">
-              <Phone size={16} className="mr-2" />
-              <span>+91 9876543210</span>
-            </div>
-            <div className="flex items-center mb-2">
-              <Mail size={16} className="mr-2" />
-              <span>info@wealthcraft.com</span>
-            </div>
-            <div className="flex items-start mb-2">
-              <MapPin size={16} className="mr-2 mt-1" />
-              <span>123 Financial District, Mumbai 400001, India</span>
-            </div>
+    <footer>
+      {/* Contact Info Section - Blue background */}
+      <div className="w3-theme-d5 w3-padding-32">
+        <div className="w3-row-padding w3-container">
+          <div className="w3-third w3-padding-16">
+            <h3>Call Us Now</h3>
+            <p>+91 9664245747</p>
+            <p>+91 9322231497</p>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><Link to="/" className="hover:text-secondary">Home</Link></li>
-              <li><Link to="/about" className="hover:text-secondary">About Us</Link></li>
-              <li><Link to="/mutual-fund" className="hover:text-secondary">Mutual Funds</Link></li>
-              <li><Link to="/insurance" className="hover:text-secondary">Insurance</Link></li>
-              <li><Link to="/blog" className="hover:text-secondary">Blog</Link></li>
-              <li><Link to="/contact" className="hover:text-secondary">Contact Us</Link></li>
-            </ul>
+          
+          <div className="w3-third w3-padding-16">
+            <h3>Address</h3>
+            <p>403, Avior Corporate Park,</p>
+            <p>L B S Road, Mulund west,</p>
+            <p>Mumbai-400080</p>
           </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Our Services</h3>
-            <ul className="space-y-2">
-              <li><Link to="/mutual-fund" className="hover:text-secondary">Mutual Fund Investments</Link></li>
-              <li><Link to="/bonds" className="hover:text-secondary">Bonds & Fixed Income</Link></li>
-              <li><Link to="/insurance" className="hover:text-secondary">Insurance Solutions</Link></li>
-              <li><Link to="/pms" className="hover:text-secondary">Portfolio Management</Link></li>
-              <li><Link to="/tools" className="hover:text-secondary">Financial Calculators</Link></li>
-              <li><Link to="/unlisted-shares" className="hover:text-secondary">Unlisted Shares</Link></li>
-            </ul>
+          
+          <div className="w3-third w3-padding-16">
+            <h3>Email Us</h3>
+            <p>termil@dinvest.in</p>
           </div>
-
-          {/* Newsletter */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Subscribe to Newsletter</h3>
-            <p className="mb-4">Stay updated with the latest investment insights and opportunities.</p>
-            <div className="flex">
-              <input 
-                type="email"
-                placeholder="Your email address"
-                className="px-4 py-2 w-full rounded-l-md text-gray-800"
-              />
-              <button className="bg-secondary text-white px-4 py-2 rounded-r-md hover:bg-secondary-hover">
-                Subscribe
-              </button>
-            </div>
-            <div className="flex space-x-3 mt-6">
-              <a href="#" className="hover:text-secondary"><Facebook size={20} /></a>
-              <a href="#" className="hover:text-secondary"><Twitter size={20} /></a>
-              <a href="#" className="hover:text-secondary"><Linkedin size={20} /></a>
-              <a href="#" className="hover:text-secondary"><Youtube size={20} /></a>
-              <a href="#" className="hover:text-secondary"><Instagram size={20} /></a>
+        </div>
+      </div>
+      
+      {/* Additional Info Section - Dark Blue background */}
+      <div className="w3-theme-d5 w3-padding-32">
+        <div className="w3-row-padding w3-container">
+          <div className="w3-third w3-padding-16">
+            <h3>About Us</h3>
+            <p>Creating Wealth through personalized Financial Planning. Founded 35years back on simple idea of securing family with life Insurance</p>
+          </div>
+          
+          <div className="w3-third w3-padding-16">
+            <h3>Working Hours</h3>
+            <p>Mon - Sat : 8:00 AM to 7:00 PM</p>
+            <p>Sunday : Closed</p>
+          </div>
+          
+          <div className="w3-third w3-padding-16">
+            <h3>Follow Us</h3>
+            <div className="w3-padding-16">
+              <a href="#" className="w3-padding-small">
+                <Facebook size={28} className="w3-text-white" />
+              </a>
+              <a href="#" className="w3-padding-small">
+                <Twitter size={28} className="w3-text-white" />
+              </a>
+              <a href="#" className="w3-padding-small">
+                <Linkedin size={28} className="w3-text-white" />
+              </a>
+              <a href="#" className="w3-padding-small">
+                <Youtube size={28} className="w3-text-white" />
+              </a>
             </div>
           </div>
         </div>
-
-        <div className="border-t border-gray-600 mt-8 pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p>&copy; {new Date().getFullYear()} WealthCraft. All rights reserved.</p>
-            <div className="flex space-x-4 mt-4 md:mt-0">
-              <Link to="/terms" className="hover:text-secondary">Terms of Service</Link>
-              <Link to="/privacy" className="hover:text-secondary">Privacy Policy</Link>
-              <Link to="/disclaimer" className="hover:text-secondary">Disclaimer</Link>
-            </div>
-          </div>
+      </div>
+      
+      {/* Disclaimer Section - Black background */}
+      <div className="w3-black w3-padding-16 w3-small">
+        <div className="w3-container">
+          <p className="w3-center">Risk Factors – Investments in Mutual Funds are subject to Market Risks. Read all scheme related documents carefully before investing. Mutual Fund Schemes do not assure or guarantee any returns. Past performances of any Mutual Fund Scheme may or may not be sustained in future. There is no guarantee that the investment objective of any suggested scheme shall be achieved. All existing and prospective investors are advised to check and evaluate the Exit loads and other cost structure (TER) applicable at the time of making the investment before finalizing on any investment decision for Mutual Funds schemes.</p>
+          <p className="w3-center">AMFI Registered Mutual Fund Distributor – ARN-262305 | Date of initial registration – 00 APR 0000 | Current validity of ARN – 00 APR 0000</p>
+          <p className="w3-center">Grievance Officer: Mr. ABCD | termil@dinvest.in</p>
+          <p className="w3-center">Copyright 2024. Daftari Finserv LLP <Link to="/important-links" className="w3-text-amber">Important Links</Link> | <Link to="/disclaimer" className="w3-text-amber">Disclaimer</Link> | <Link to="/disclosure" className="w3-text-amber">Disclosure</Link> | <Link to="/privacy-policy" className="w3-text-amber">Privacy Policy</Link> | <Link to="/sid-sai-kim" className="w3-text-amber">SID/SAI/KIM</Link> | <Link to="/code-of-conduct" className="w3-text-amber">Code of Conduct</Link> | <Link to="/sebi-circulars" className="w3-text-amber">SEBI Circulars</Link> | <Link to="/amfi-risk-factors" className="w3-text-amber">AMFI Risk Factors</Link></p>
         </div>
       </div>
     </footer>

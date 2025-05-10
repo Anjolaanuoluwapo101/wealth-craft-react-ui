@@ -11,7 +11,7 @@ const CtaSection: React.FC = () => {
       <div className="w3-container w3-center">
         <h2 className="w3-xxxlarge">Ready to Start Your Investment Journey?</h2>
         <p className="w3-large w3-opacity w3-padding">
-          Join thousands of investors who trust WealthCraft for their financial goals. Get started today with personalized investment solutions.
+          Join thousands of investors who trust WealthCraft for their financial goals.
         </p>
         <div className="w3-padding-16">
           {!user ? (
