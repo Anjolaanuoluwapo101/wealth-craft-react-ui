@@ -1,10 +1,6 @@
 
 import React from 'react';
 import { MutualFund } from '../types';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
-import { Button } from './ui/button';
-import { ArrowRight } from 'lucide-react';
 
 interface MutualFundCardProps {
   fund: MutualFund;
@@ -12,73 +8,72 @@ interface MutualFundCardProps {
 
 const MutualFundCard: React.FC<MutualFundCardProps> = ({ fund }) => {
   return (
-    <Card className="h-full transition-shadow hover:shadow-lg">
-      <CardHeader>
-        <div className="flex justify-between items-start">
-          <CardTitle className="text-lg font-bold">{fund.name}</CardTitle>
-          {fund.isRecommended && (
-            <Badge variant="secondary">Recommended</Badge>
-          )}
-          {fund.isNFO && (
-            <Badge variant="destructive">NFO</Badge>
-          )}
-        </div>
-        <CardDescription>{fund.amc}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-3">
-          <div className="flex justify-between">
-            <span className="text-sm text-muted-foreground">Category</span>
-            <span className="font-medium">{fund.category}</span>
+    <div className="w3-card w3-round w3-white w3-hover-shadow">
+      <div className="w3-container w3-padding">
+        <div className="w3-row">
+          <div className="w3-col m8">
+            <h3 className="w3-large w3-text-dark-grey">{fund.name}</h3>
           </div>
-          <div className="flex justify-between">
-            <span className="text-sm text-muted-foreground">NAV</span>
-            <span className="font-medium">₹{fund.nav.toFixed(2)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-sm text-muted-foreground">1Y Return</span>
-            <span className="font-medium text-green-600">{fund.oneYearReturn > 0 ? '+' : ''}{fund.oneYearReturn}%</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-sm text-muted-foreground">Risk Level</span>
-            <span className={`font-medium ${
-              fund.riskLevel === 'Low' ? 'text-green-600' : 
-              fund.riskLevel === 'Moderate' ? 'text-amber-500' : 
-              'text-red-500'
-            }`}>
-              {fund.riskLevel}
-            </span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-sm text-muted-foreground">Rating</span>
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <svg 
-                  key={i}
-                  xmlns="http://www.w3.org/2000/svg" 
-                  viewBox="0 0 24 24"
-                  fill={i < fund.rating ? "currentColor" : "none"}
-                  stroke={i < fund.rating ? "currentColor" : "currentColor"}
-                  className={`w-4 h-4 ${i < fund.rating ? 'text-secondary' : 'text-gray-300'}`}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-                  />
-                </svg>
-              ))}
-            </div>
+          <div className="w3-col m4 w3-right-align">
+            {fund.isRecommended && (
+              <span className="w3-tag w3-amber w3-round">Recommended</span>
+            )}
+            {fund.isNFO && (
+              <span className="w3-tag w3-red w3-round">NFO</span>
+            )}
           </div>
         </div>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">
-          Invest Now <ArrowRight className="ml-2 w-4 h-4" />
-        </Button>
-      </CardFooter>
-    </Card>
+        <p className="w3-text-grey">{fund.amc}</p>
+      </div>
+      
+      <div className="w3-container w3-padding">
+        <div className="w3-row w3-padding-small">
+          <div className="w3-col m6 w3-text-grey">Category</div>
+          <div className="w3-col m6 w3-right-align">{fund.category}</div>
+        </div>
+        
+        <div className="w3-row w3-padding-small">
+          <div className="w3-col m6 w3-text-grey">NAV</div>
+          <div className="w3-col m6 w3-right-align">₹{fund.nav.toFixed(2)}</div>
+        </div>
+        
+        <div className="w3-row w3-padding-small">
+          <div className="w3-col m6 w3-text-grey">1Y Return</div>
+          <div className={`w3-col m6 w3-right-align ${fund.oneYearReturn > 0 ? 'w3-text-green' : 'w3-text-red'}`}>
+            {fund.oneYearReturn > 0 ? '+' : ''}{fund.oneYearReturn}%
+          </div>
+        </div>
+        
+        <div className="w3-row w3-padding-small">
+          <div className="w3-col m6 w3-text-grey">Risk Level</div>
+          <div className={`w3-col m6 w3-right-align ${
+            fund.riskLevel === 'Low' ? 'w3-text-green' : 
+            fund.riskLevel === 'Moderate' ? 'w3-text-amber' : 
+            'w3-text-red'
+          }`}>
+            {fund.riskLevel}
+          </div>
+        </div>
+        
+        <div className="w3-row w3-padding-small">
+          <div className="w3-col m6 w3-text-grey">Rating</div>
+          <div className="w3-col m6 w3-right-align">
+            {[...Array(5)].map((_, i) => (
+              <i 
+                key={i}
+                className={`fa fa-star ${i < fund.rating ? 'w3-text-amber' : 'w3-text-grey'}`}
+              ></i>
+            ))}
+          </div>
+        </div>
+      </div>
+      
+      <div className="w3-container w3-padding-16">
+        <button className="w3-button w3-blue w3-round w3-block">
+          Invest Now <i className="fa fa-arrow-right w3-small w3-margin-left"></i>
+        </button>
+      </div>
+    </div>
   );
 };
 

@@ -1,72 +1,80 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from './ui/button';
 import { useAuth } from '../context/AuthContext';
 
 const HeroBanner: React.FC = () => {
   const { user } = useAuth();
   
   return (
-    <div className="relative bg-gradient-to-r from-primary to-blue-700 text-white py-20">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          <div className="space-y-6 z-10">
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-              Your Path to Financial <span className="text-secondary">Excellence</span>
+    <div className="w3-container w3-theme w3-padding-64">
+      <div className="w3-container">
+        <div className="w3-row">
+          <div className="w3-col m6 w3-padding-large">
+            <h1 className="w3-xxxlarge">
+              Your Path to Financial <span className="w3-text-amber">Excellence</span>
             </h1>
-            <p className="text-lg md:text-xl opacity-90 max-w-lg">
+            <p className="w3-large w3-opacity">
               Expert guidance for your investments, insurance, and financial planning needs with personalized solutions.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="w3-padding-16">
               {!user ? (
                 <>
                   <Link to="/register">
-                    <Button variant="secondary" size="lg">
+                    <button className="w3-button w3-amber w3-round w3-margin-right">
                       Get Started
-                    </Button>
+                    </button>
                   </Link>
                   <Link to="/contact">
-                    <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-primary" size="lg">
+                    <button className="w3-button w3-border w3-border-white w3-round w3-transparent w3-text-white w3-hover-white w3-hover-text-theme">
                       Contact Us
-                    </Button>
+                    </button>
                   </Link>
                 </>
               ) : (
                 <>
                   <Link to="/dashboard">
-                    <Button variant="secondary" size="lg">
+                    <button className="w3-button w3-amber w3-round w3-margin-right">
                       View Dashboard
-                    </Button>
+                    </button>
                   </Link>
                   <Link to="/recommended-funds">
-                    <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-primary" size="lg">
+                    <button className="w3-button w3-border w3-border-white w3-round w3-transparent w3-text-white w3-hover-white w3-hover-text-theme">
                       Explore Investments
-                    </Button>
+                    </button>
                   </Link>
                 </>
               )}
             </div>
           </div>
           
-          <div className="relative hidden lg:block">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-80 h-80 bg-blue-500 rounded-full opacity-20"></div>
+          <div className="w3-col m6 w3-padding-large w3-hide-small">
+            <div className="w3-display-container" style={{position: 'relative'}}>
+              <div style={{
+                position: 'absolute',
+                width: '200px',
+                height: '200px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(0, 102, 204, 0.2)',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: 0
+              }}></div>
+              <img 
+                src="https://source.unsplash.com/random/600x400?finance" 
+                alt="Financial Success"
+                className="w3-round w3-image w3-card"
+                style={{width: '100%', position: 'relative', zIndex: 1}}
+              />
             </div>
-            <img 
-              src="https://source.unsplash.com/random/600x400?finance" 
-              alt="Financial Success"
-              className="rounded-lg shadow-2xl relative z-10"
-            />
           </div>
         </div>
       </div>
       
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="h-20 w-full text-white">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C57.44,118.92,150.26,82.66,321.39,56.44Z" className="fill-white"></path>
-        </svg>
-      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w3-display-bottommiddle" style={{marginBottom: '-8px', width: '100%'}}>
+        <path fill="#ffffff" fillOpacity="1" d="M0,96L48,112C96,128,192,160,288,154.7C384,149,480,107,576,90.7C672,75,768,85,864,96C960,107,1056,117,1152,122.7C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
     </div>
   );
 };
